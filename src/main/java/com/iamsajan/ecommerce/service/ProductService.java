@@ -57,4 +57,21 @@ public class ProductService {
         }
         return null;
     }
+
+    public ProductResponseListDto getProductsByCategory(Long id) {
+
+        List<ProductResponseDto> productResponseDtoList = new ArrayList<>();
+
+        List<Product> products = productRepository.findByProductCategoryId(id);
+
+        for (Product product : products) {
+            productResponseDtoList.add(getProductResponseDto(product));
+        }
+
+        ProductResponseListDto response = new ProductResponseListDto();
+        response.setProducts(productResponseDtoList);
+        response.setTotal(products.stream().count());
+
+        return response;
+    }
 }

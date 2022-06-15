@@ -26,4 +26,5 @@ public class ProductController {
     public ProductResponseDto getProduct(@PathVariable("id") Long id) {
         return productService.getProduct(id);
     }
+
 }
