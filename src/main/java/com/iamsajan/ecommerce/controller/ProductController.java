@@ -27,4 +27,9 @@ public class ProductController {
         return productService.getProduct(id);
     }
 
+    @GetMapping("/search")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ProductResponseListDto searchProducts(@RequestParam("q") String q) {
+        return productService.searchProducts(q);
+    }
 }

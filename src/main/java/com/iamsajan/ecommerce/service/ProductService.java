@@ -74,4 +74,22 @@ public class ProductService {
 
         return response;
     }
+
+    public ProductResponseListDto searchProducts(String q) {
+        if (q.trim() == "")
+            return new ProductResponseListDto(null,0L);
+
+        List<ProductResponseDto> productResponseDtoList = new ArrayList<>();
+        List<Product> products = productRepository.findByNameContaining(q);
+
+        for (Product product : products) {
+            productResponseDtoList.add(getProductResponseDto(product));
+        }
+
+        ProductResponseListDto response = new ProductResponseListDto();
+        response.setProducts(productResponseDtoList);
+        response.setTotal((long) products.size());
+
+        return response;
+    }
 }

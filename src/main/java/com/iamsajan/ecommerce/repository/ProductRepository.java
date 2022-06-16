@@ -10,5 +10,7 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByProductCategoryId(Long id);
 
+    List<Product> findByNameContaining(String q);
+
 //    Page<Product> findByProductCategoryId(@RequestParam("id") Long id, Pageable pageable);
 }
