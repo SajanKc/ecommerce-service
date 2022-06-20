@@ -13,5 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductResponseListDto {
     private List<ProductResponseDto> products;
+    private PageResponseDto page;
     private Long total;
 }
